@@ -1,0 +1,9 @@
+001,Pikachu,3,1,6,
+002,Charmander,0,0,10
+003,Bulbasaur,0,10,0
+004,Squirtle,10,0,0
+005,Jigglypuff,6,1,3
+006,Eevee,6,3,1
+007,Snorlax,3,6,1
+008,Machop,1,3,6
+009,Psyduck,1,6,3
