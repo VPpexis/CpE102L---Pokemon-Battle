@@ -1,9 +1,9 @@
 import random
 import sys
-
 class battleFight():
-  Heal_up = True
-  def __init__(self, p1, p2, Att1, Att2, Def1, Def2, Agt1, Agt2):
+  
+  def __init__(self, p1, p2, Att1, Att2, Def1, Def2, Agt1, Agt2, winner):
+    #Variable Delcleraation
     self.p1 = p1
     self.p2 = p2
     self.Att1 = Att1
@@ -12,12 +12,9 @@ class battleFight():
     self.Def2 = Def2
     self.Agt1 = Agt1
     self.Agt2 = Agt2
-
-    winner = "None"
+    Heal_up = False
     P1_HP = 100
     P2_HP = 100
-    dec = "No"
-    Heal_up = False
     check = True
     turn = 0
     p_move = 0
@@ -28,32 +25,34 @@ class battleFight():
     turn = random.randint(1,2)
 
     if(turn==1):
-      print("Player 1 goes first!!")
+      print( p1 + " goes first!!")
     else:
-      print("Player 2 goes first!!")
+      print(p2 + " goes first!!")
 
     while(P1_HP >= 0 and P2_HP >= 0):
       if(turn == 1):
         #P1 Turn
-        print(str(p1) + " HP: " + str(P1_HP) + "     " + str(p2) + " HP: " + str(P2_HP))
-        p_move = self.Player(p1,Att1,Agt1)
+        print("#############################################")
+        print("%s HP: %.2f     %s HP: %.2f" % (p1, P1_HP, p2, P2_HP))
+        p_move, Heal_up = self.Player(p1,Att1,Agt1)
 
         #Heal P1
         if Heal_up:
           P1_HP = P1_HP + p_move
-          if(P1_HP < 100):
+          if(P1_HP > 100):
             P1_HP = 100
         else:
           P2_HP = P2_HP - p_move
 
         #P2 Turn
-        print(str(p1) + " HP: " + str(P1_HP) + "     " + str(p2) + " HP: " + str(P2_HP))
-        p_move = self.Player(p2,Att2,Agt2)
+        print("#############################################")
+        print("%s HP: %.2f     %s HP: %.2f" % (p1, P1_HP, p2, P2_HP))
+        p_move, Heal_up = self.Player(p2,Att2,Agt2)
 
         #Heal P1
         if Heal_up:
           P2_HP = P2_HP + p_move
-          if(P2_HP < 100):
+          if(P2_HP > 100):
             P2_HP = 100
         else:
           P1_HP = P1_HP - p_move
@@ -61,54 +60,45 @@ class battleFight():
         p_move = 0
       else:
         #P2 Turn
-        print(str(p1) + "HP: " + str(P1_HP) + "     " + str(p2) + "HP: " + str(P2_HP))
-        p_move = self.Player(p2, Att2,Agt2)
+        print("#############################################")
+        print("%s HP: %.2f     %s HP: %.2f" % (p1, P1_HP, p2, P2_HP))
+        p_move, Heal_up = self.Player(p2, Att2,Agt2)
 
         #Heal P1
         if Heal_up:
           P2_HP = P2_HP + p_move
-          if(P2_HP < 100):
+          if(P2_HP > 100):
             P2_HP = 100
         else:
         #Damge P2
           P1_HP = P1_HP - p_move
 
         #P1 Turn
-        print(str(p1) + "HP: " + str(P1_HP) + "     " + str(p2) + "HP: " + str(P2_HP))
-        p_move = self.Player(p1,Att1,Agt1)
+        print("#############################################")
+        print("%s HP: %.2f     %s HP: %.2f" % (p1, P1_HP, p2, P2_HP))
+        p_move, Heal_up = self.Player(p1,Att1,Agt1)
 
         #Heal P1
         if Heal_up:
           P1_HP = P1_HP + p_move
-          if(P1_HP < 100):
+          if(P1_HP > 100):
             P1_HP = 100
         else:
         #Damge P2
           P2_HP = P2_HP - p_move
     
     #Game is finished
-    print("Gameover")
     if(P1_HP <= 0):
-      print(str(p2)+ " Wins!!!")
+      self.winner = 1
+      return
+    elif(P2_HP <= 0):
+      self.winner = 2
+      return
     else:
-      print(str(p1) + "Wins!!!")
-    
-    while check:
-      Dec = str(input("Do you want to play again?[Y/N]"))
-      if(Dec == "Y" or Dec == "y"):
-        #Temporary
-        print("Goto CharSel()")
-        sys.exit()
-        check = False
-      elif(Dec == "N" or Dec == "n"):
-        sys.exit()
-        check = False
-      else:
-        print("Input not recognized.")
-        check = True
+      self.winner = 0
 
 
-
+  #Module for Player Movement
   def Player(p, Name, Att, Agt):
     p.Name = Name
     p.Att = Att
@@ -159,4 +149,4 @@ class battleFight():
         print("Input not recognized")
         checker = True
 
-    return move
+    return move, Heal_up
