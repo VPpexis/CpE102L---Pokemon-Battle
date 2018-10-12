@@ -1,8 +1,9 @@
 import csv
 
-class charSel():
+class PokeSelect():
   def __str__(self):
     player = ""
+    print("#############################################")
     print("Pick your Pokemon Character" "\n")
     filename = "folder/charac.txt"
     file = open(filename, "r")
@@ -21,7 +22,6 @@ class charSel():
             player = str(row[currentindex+1])
             print("Your Chosen Pokemon Character: " + player)
 
-    
+    checker = False
+    print("#############################################")
     return player
-
-        
