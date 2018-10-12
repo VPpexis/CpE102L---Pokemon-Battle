@@ -27,14 +27,19 @@ class battleFight():
 
     turn = random.randint(1,2)
 
-    while(P1_HP >= 0 or P2_HP >= 0):
+    if(turn==1):
+      print("Player 1 goes first!!")
+    else:
+      print("Player 2 goes first!!")
+
+    while(P1_HP >= 0 and P2_HP >= 0):
       if(turn == 1):
         #P1 Turn
-        print(str(p1) + "HP: " + str(P1_HP) + "     " + str(p2) + "HP: " + str(P2_HP))
+        print(str(p1) + " HP: " + str(P1_HP) + "     " + str(p2) + " HP: " + str(P2_HP))
         p_move = self.Player(p1,Att1,Agt1)
 
         #Heal P1
-        while Heal_up:
+        if Heal_up:
           P1_HP = P1_HP + p_move
           if(P1_HP < 100):
             P1_HP = 100
@@ -42,11 +47,11 @@ class battleFight():
           P2_HP = P2_HP - p_move
 
         #P2 Turn
-        print(str(p1) + "HP: " + str(P1_HP) + "     " + str(p2) + "HP: " + str(P2_HP))
+        print(str(p1) + " HP: " + str(P1_HP) + "     " + str(p2) + " HP: " + str(P2_HP))
         p_move = self.Player(p2,Att2,Agt2)
 
         #Heal P1
-        while Heal_up:
+        if Heal_up:
           P2_HP = P2_HP + p_move
           if(P2_HP < 100):
             P2_HP = 100
@@ -60,7 +65,7 @@ class battleFight():
         p_move = self.Player(p2, Att2,Agt2)
 
         #Heal P1
-        while Heal_up:
+        if Heal_up:
           P2_HP = P2_HP + p_move
           if(P2_HP < 100):
             P2_HP = 100
@@ -73,7 +78,7 @@ class battleFight():
         p_move = self.Player(p1,Att1,Agt1)
 
         #Heal P1
-        while Heal_up:
+        if Heal_up:
           P1_HP = P1_HP + p_move
           if(P1_HP < 100):
             P1_HP = 100
@@ -130,6 +135,7 @@ class battleFight():
 
     #Miss Decision
     if miss in missMod:
+      move = 0
       print("You missed.")
       return move
 
