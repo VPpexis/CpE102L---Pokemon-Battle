@@ -1,8 +1,5 @@
 import csv
 
-class charSel():
-  def __str__(self):
-    player = ""
     print("Pick your Pokemon Character" "\n")
     filename = "folder/charac.txt"
     file = open(filename, "r")
@@ -21,7 +18,3 @@ class charSel():
             player = str(row[currentindex+1])
             print("Your Chosen Pokemon Character: " + player)
 
-    
-    return player
-
-        
