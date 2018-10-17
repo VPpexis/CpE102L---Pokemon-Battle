@@ -1,9 +1,9 @@
-001,Pikachu,3,1,6,
-002,Charmander,0,0,10
-003,Bulbasaur,0,10,0
-004,Squirtle,10,0,0
-005,Jigglypuff,6,1,3
-006,Eevee,6,3,1
-007,Snorlax,3,6,1
-008,Machop,1,3,6
-009,Psyduck,1,6,3
+001,Pikachu,6,1,10,Thunderbolt
+002,Charmander,8,3,7,Flamethrower
+003,Bulbasaur,6,5,5,Razor Leaf
+004,Squirtle,5,8,4,Water Gun
+005,Jigglypuff,2,10,5,Doubleslap
+006,Eevee,5,6,6,Double Edge
+007,Snorlax,8,10,0,Body Slam
+008,Machop,10,2,5,Karate Chop
+009,Psyduck,7,4,5,Confusion
